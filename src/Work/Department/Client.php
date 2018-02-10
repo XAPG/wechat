@@ -76,4 +76,19 @@ class Client extends BaseClient
     {
         return $this->httpGet('cgi-bin/department/list', compact('id'));
     }
+
+    /**
+     * 异步批量接口：部门全量覆盖
+     *
+     * @param array $data
+     *
+     * @return array|\EasyWeChat\Kernel\Support\Collection|object|\Psr\Http\Message\ResponseInterface|string
+     *
+     * @throws \EasyWeChat\Kernel\Exceptions\InvalidConfigException
+     */
+    public function batchReplace(array $data)
+    {
+        return $this->httpPostJson('cgi-bin/batch/replaceparty', $data);
+    }
+
 }
