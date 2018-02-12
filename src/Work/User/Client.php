@@ -183,4 +183,19 @@ class Client extends BaseClient
         return $this->httpPostJson('cgi-bin/batch/replaceuser', $data);
     }
 
+    /**
+     * 根据code 获取用户登录信息
+     * @param string $code
+     *
+     * @return \Psr\Http\Message\ResponseInterface|\EasyWeChat\Kernel\Support\Collection|array|object|string
+     */
+    public function getuserinfo(string $code)
+    {
+        $params = [
+            'code' => $code,
+        ];
+
+        return $this->httpGet('cgi-bin/user/getuserinfo', $params);
+    }
+
 }
