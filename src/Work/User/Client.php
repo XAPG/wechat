@@ -184,6 +184,33 @@ class Client extends BaseClient
     }
 
     /**
+     * 异步批量接口：人员增量更新
+     *
+     * @param array $data
+     *
+     * @return array|\EasyWeChat\Kernel\Support\Collection|object|\Psr\Http\Message\ResponseInterface|string
+     *
+     * @throws \EasyWeChat\Kernel\Exceptions\InvalidConfigException
+     */
+    public function batchSync(array $data)
+    {
+        return $this->httpPostJson('cgi-bin/batch/syncuser', $data);
+    }
+
+    /**
+     * 获取异步任务结果
+     * @param $jobid
+     * @return array|\EasyWeChat\Kernel\Support\Collection|object|\Psr\Http\Message\ResponseInterface|string
+     * @throws \EasyWeChat\Kernel\Exceptions\InvalidConfigException
+     */
+    public function batchResult($jobid)
+    {
+        $params = ['jobid' => $jobid];
+
+        return $this->httpGet('cgi-bin/batch/getresult', $params);
+    }
+
+    /**
      * 根据code 获取用户登录信息
      * @param string $code
      *

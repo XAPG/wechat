@@ -91,4 +91,17 @@ class Client extends BaseClient
         return $this->httpPostJson('cgi-bin/batch/replaceparty', $data);
     }
 
+    /**
+     * 获取异步任务结果
+     * @param $jobid
+     * @return array|\EasyWeChat\Kernel\Support\Collection|object|\Psr\Http\Message\ResponseInterface|string
+     * @throws \EasyWeChat\Kernel\Exceptions\InvalidConfigException
+     */
+    public function batchResult($jobid)
+    {
+        $params = ['jobid' => $jobid];
+
+        return $this->httpGet('cgi-bin/batch/getresult', $params);
+    }
+
 }
