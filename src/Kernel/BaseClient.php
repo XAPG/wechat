@@ -73,6 +73,19 @@ class BaseClient
     }
 
     /**
+     * GET request, return stream data.
+     *
+     * @param string $url
+     * @param array $query
+     * @return mixed
+     * @throws Exceptions\InvalidConfigException
+     */
+    public function httpGetStream(string $url, array $query = [])
+    {
+        return $this->request($url, 'GET', ['query' => $query], true)->getBody();
+    }
+
+    /**
      * POST request.
      *
      * @param string $url
