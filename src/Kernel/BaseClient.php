@@ -73,16 +73,16 @@ class BaseClient
     }
 
     /**
-     * GET request, return stream data.
+     * GET request, return raw data.
      *
      * @param string $url
      * @param array $query
      * @return mixed
      * @throws Exceptions\InvalidConfigException
      */
-    public function httpGetStream(string $url, array $query = [])
+    public function httpGetRaw(string $url, array $query = [])
     {
-        return $this->request($url, 'GET', ['query' => $query], true)->getBody();
+        return $this->request($url, 'GET', ['query' => $query], true);
     }
 
     /**
