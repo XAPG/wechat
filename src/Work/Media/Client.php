@@ -29,7 +29,7 @@ class Client extends BaseClient
      */
     public function get(string $mediaId)
     {
-        return $this->httpGetStream('cgi-bin/media/get', ['media_id' => $mediaId]);
+        return $this->httpGetRaw('cgi-bin/media/get', ['media_id' => $mediaId]);
     }
 
     /**
